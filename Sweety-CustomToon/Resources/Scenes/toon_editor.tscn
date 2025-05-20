@@ -1,0 +1,442 @@
+[gd_scene load_steps=23 format=3 uid="uid://b5wfnsfrdvieu"]
+
+[ext_resource type="Script" uid="uid://bhd5rr00t0hqj" path="res://mods-unpacked/Sweety-CustomToon/Resources/Scripts/toon_editor.gd" id="1_emnjl"]
+[ext_resource type="PackedScene" uid="uid://dkd6dg5s5uuef" path="res://objects/general_ui/base_panel.tscn" id="2_re4kc"]
+[ext_resource type="FontFile" uid="uid://cup2yr5w7or1l" path="res://fonts/Minnie.TTF" id="3_lutu1"]
+[ext_resource type="PackedScene" uid="uid://b0d1er4oqiqcn" path="res://objects/general_ui/general_button/general_button.tscn" id="4_88p5q"]
+[ext_resource type="Texture2D" uid="uid://ddcktpjy3gdew" path="res://ui_assets/misc/uiAccessoryDelete_up.png" id="5_hgadm"]
+[ext_resource type="Texture2D" uid="uid://b7ri5sq021cvo" path="res://ui_assets/misc/uiAccessoryDelete_down.png" id="6_b2jl8"]
+[ext_resource type="Texture2D" uid="uid://dn8vndd37lqom" path="res://ui_assets/misc/uiAccessoryDelete_rollover.png" id="7_q0j06"]
+[ext_resource type="FontFile" uid="uid://815gwlftl5ik" path="res://fonts/impress-bt.ttf" id="8_7282y"]
+[ext_resource type="Shader" uid="uid://ryrnfqn0ixe5" path="res://scenes/title_screen/hue_shift.gdshader" id="9_n7xuf"]
+[ext_resource type="Environment" uid="uid://dfbffixgqukix" path="res://scenes/game_floor/default_environment.tres" id="10_sr0xt"]
+[ext_resource type="PackedScene" uid="uid://b0tnwymf4fjdt" path="res://mods-unpacked/Sweety-CustomToon/Resources/Scenes/Editor Buttons/Stepper.tscn" id="11_lrnft"]
+[ext_resource type="Texture2D" uid="uid://dyks22nwfa2ow" path="res://ui_assets/battle/gag_button/InventoryButtonUp.png" id="12_y6iyp"]
+[ext_resource type="Texture2D" uid="uid://bry0lwouy0leq" path="res://ui_assets/battle/gag_button/InventoryButtonDown.png" id="13_lmgg5"]
+[ext_resource type="Texture2D" uid="uid://bjw6y3vdoagi4" path="res://ui_assets/battle/gag_button/InventoryButtonRollover.png" id="14_nm3nn"]
+[ext_resource type="Theme" uid="uid://dsjnw3phmkdof" path="res://mods-unpacked/Sweety-CustomToon/Resources/Editor.tres" id="15_re4kc"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ynj2y"]
+font = ExtResource("3_lutu1")
+font_size = 36
+font_color = Color(0.19651, 0.579885, 0.918822, 1)
+shadow_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_kkjkl"]
+font = ExtResource("8_7282y")
+font_size = 24
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_om0tp"]
+shader = ExtResource("9_n7xuf")
+shader_parameter/Shift_Hue = 0.585
+shader_parameter/alpha = 1.0
+
+[sub_resource type="World3D" id="World3D_wmj2m"]
+environment = ExtResource("10_sr0xt")
+
+[sub_resource type="LabelSettings" id="LabelSettings_1ednl"]
+font = ExtResource("3_lutu1")
+font_size = 24
+font_color = Color(0.996594, 0.637954, 0.300632, 1)
+outline_color = Color(0, 0, 0, 1)
+shadow_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_vcj8s"]
+font = ExtResource("8_7282y")
+font_size = 18
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_lutu1"]
+font = ExtResource("8_7282y")
+font_size = 28
+font_color = Color(0, 0, 0, 1)
+
+[node name="ToonEditor" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_emnjl")
+
+[node name="Panel" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -500.0
+offset_top = -9.0
+offset_right = 500.0
+offset_bottom = 619.0
+grow_horizontal = 2
+
+[node name="Panel" parent="Panel" instance=ExtResource("2_re4kc")]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ToonName" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = -0.400024
+offset_top = 44.0
+offset_right = -0.400024
+offset_bottom = 90.0
+grow_horizontal = 2
+text = "CREATE A TOON"
+label_settings = SubResource("LabelSettings_ynj2y")
+horizontal_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 40
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer"]
+layout_mode = 2
+
+[node name="Spacer" type="Control" parent="Panel/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 36)
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 38.6
+offset_top = -91.0
+offset_right = -39.4
+offset_bottom = -31.0
+grow_horizontal = 2
+grow_vertical = 0
+alignment = 1
+
+[node name="Cancel" parent="Panel/HBoxContainer" instance=ExtResource("4_88p5q")]
+custom_minimum_size = Vector2(140, 60)
+layout_mode = 2
+texture_normal = ExtResource("5_hgadm")
+texture_pressed = ExtResource("6_b2jl8")
+texture_hover = ExtResource("7_q0j06")
+texture_disabled = null
+text = "Cancel"
+
+[node name="Label" parent="Panel/HBoxContainer/Cancel" index="0"]
+text = "Cancel"
+label_settings = SubResource("LabelSettings_kkjkl")
+
+[node name="SaveToon" parent="Panel/HBoxContainer" instance=ExtResource("4_88p5q")]
+material = SubResource("ShaderMaterial_om0tp")
+custom_minimum_size = Vector2(140, 60)
+layout_mode = 2
+texture_normal = ExtResource("5_hgadm")
+texture_pressed = ExtResource("6_b2jl8")
+texture_hover = ExtResource("7_q0j06")
+texture_disabled = null
+text = "Save"
+
+[node name="Label" parent="Panel/HBoxContainer/SaveToon" index="0"]
+text = "Save"
+label_settings = SubResource("LabelSettings_kkjkl")
+
+[node name="EditorViewPortContainer" type="SubViewportContainer" parent="Panel"]
+layout_mode = 0
+offset_left = 18.0
+offset_top = 30.0
+offset_right = 530.0
+offset_bottom = 542.0
+
+[node name="EditorViewPort" type="SubViewport" parent="Panel/EditorViewPortContainer"]
+unique_name_in_owner = true
+own_world_3d = true
+world_3d = SubResource("World3D_wmj2m")
+transparent_bg = true
+handle_input_locally = false
+scaling_3d_scale = 2.0
+render_target_update_mode = 4
+
+[node name="Camera3D" type="Camera3D" parent="Panel/EditorViewPortContainer/EditorViewPort"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.913, 1.944)
+
+[node name="PageButton" parent="Panel" instance=ExtResource("11_lrnft")]
+layout_mode = 0
+offset_left = 580.0
+offset_top = 89.0
+offset_right = 916.0
+offset_bottom = 133.0
+max_value = 2
+
+[node name="Label2" parent="Panel/PageButton" index="1"]
+size_flags_horizontal = 3
+text = "Body & Color"
+label_settings = SubResource("LabelSettings_1ednl")
+
+[node name="BodyColorPage" type="VBoxContainer" parent="Panel"]
+layout_mode = 0
+offset_left = 580.0
+offset_top = 137.0
+offset_right = 916.0
+offset_bottom = 565.0
+
+[node name="Species" parent="Panel/BodyColorPage" instance=ExtResource("11_lrnft")]
+layout_mode = 2
+max_value = 8
+
+[node name="Label2" parent="Panel/BodyColorPage/Species" index="1"]
+text = "Species"
+
+[node name="Body Height" parent="Panel/BodyColorPage" instance=ExtResource("11_lrnft")]
+layout_mode = 2
+max_value = 2
+
+[node name="Label2" parent="Panel/BodyColorPage/Body Height" index="1"]
+text = "Body Type"
+
+[node name="Head Shape" parent="Panel/BodyColorPage" instance=ExtResource("11_lrnft")]
+layout_mode = 2
+max_value = 3
+
+[node name="Label2" parent="Panel/BodyColorPage/Head Shape" index="1"]
+text = "Head Shape"
+
+[node name="Color" parent="Panel/BodyColorPage" instance=ExtResource("11_lrnft")]
+layout_mode = 2
+max_value = 26
+
+[node name="Label2" parent="Panel/BodyColorPage/Color" index="1"]
+text = "Color"
+
+[node name="AdvancedColor" parent="Panel/BodyColorPage/Color" instance=ExtResource("4_88p5q")]
+custom_minimum_size = Vector2(46, 29)
+layout_mode = 2
+toggle_mode = true
+texture_normal = ExtResource("12_y6iyp")
+texture_pressed = ExtResource("13_lmgg5")
+texture_hover = ExtResource("14_nm3nn")
+texture_disabled = null
+stretch_mode = 3
+text = "ADV"
+
+[node name="Label" parent="Panel/BodyColorPage/Color/AdvancedColor" index="0"]
+text = "ADV"
+label_settings = SubResource("LabelSettings_vcj8s")
+
+[node name="HeadColor" parent="Panel/BodyColorPage" instance=ExtResource("11_lrnft")]
+visible = false
+layout_mode = 2
+alignment = 2
+max_value = 26
+
+[node name="Label2" parent="Panel/BodyColorPage/HeadColor" index="1"]
+text = "Head Color"
+
+[node name="BodyColor" parent="Panel/BodyColorPage" instance=ExtResource("11_lrnft")]
+visible = false
+layout_mode = 2
+alignment = 2
+max_value = 26
+
+[node name="Label2" parent="Panel/BodyColorPage/BodyColor" index="1"]
+text = "Body Color"
+
+[node name="LegsColor" parent="Panel/BodyColorPage" instance=ExtResource("11_lrnft")]
+visible = false
+layout_mode = 2
+alignment = 2
+max_value = 26
+
+[node name="Label2" parent="Panel/BodyColorPage/LegsColor" index="1"]
+text = "Legs Color"
+
+[node name="EyeLashes" parent="Panel/BodyColorPage" instance=ExtResource("11_lrnft")]
+layout_mode = 2
+max_value = 1
+
+[node name="Label2" parent="Panel/BodyColorPage/EyeLashes" index="1"]
+text = "Eyelashes"
+
+[node name="ClothesPage" type="VBoxContainer" parent="Panel"]
+visible = false
+layout_mode = 0
+offset_left = 580.0
+offset_top = 137.0
+offset_right = 916.0
+offset_bottom = 565.0
+
+[node name="Shirt" parent="Panel/ClothesPage" instance=ExtResource("11_lrnft")]
+layout_mode = 2
+max_value = 4
+
+[node name="Label2" parent="Panel/ClothesPage/Shirt" index="1"]
+text = "Shirt"
+
+[node name="ShirtColor" parent="Panel/ClothesPage" instance=ExtResource("11_lrnft")]
+layout_mode = 2
+max_value = 26
+
+[node name="Label2" parent="Panel/ClothesPage/ShirtColor" index="1"]
+text = "Shirt Color"
+
+[node name="SkirtToggle" parent="Panel/ClothesPage" instance=ExtResource("11_lrnft")]
+layout_mode = 2
+max_value = 1
+
+[node name="Label2" parent="Panel/ClothesPage/SkirtToggle" index="1"]
+text = "Bottoms Type"
+
+[node name="Shorts" parent="Panel/ClothesPage" instance=ExtResource("11_lrnft")]
+layout_mode = 2
+max_value = 3
+
+[node name="Label2" parent="Panel/ClothesPage/Shorts" index="1"]
+text = "Shorts"
+
+[node name="ShortsColor" parent="Panel/ClothesPage" instance=ExtResource("11_lrnft")]
+layout_mode = 2
+max_value = 26
+
+[node name="Label2" parent="Panel/ClothesPage/ShortsColor" index="1"]
+text = "Shorts Color"
+
+[node name="Skirt" parent="Panel/ClothesPage" instance=ExtResource("11_lrnft")]
+visible = false
+layout_mode = 2
+max_value = 4
+
+[node name="Label2" parent="Panel/ClothesPage/Skirt" index="1"]
+text = "Skirt"
+
+[node name="SkirtColor" parent="Panel/ClothesPage" instance=ExtResource("11_lrnft")]
+visible = false
+layout_mode = 2
+max_value = 26
+
+[node name="Label2" parent="Panel/ClothesPage/SkirtColor" index="1"]
+text = "Skirt Color"
+
+[node name="InfoPage" type="VBoxContainer" parent="Panel"]
+visible = false
+layout_mode = 0
+offset_left = 580.0
+offset_top = 137.0
+offset_right = 916.0
+offset_bottom = 565.0
+
+[node name="Shirt" parent="Panel/InfoPage" instance=ExtResource("11_lrnft")]
+visible = false
+layout_mode = 2
+max_value = 4
+
+[node name="Label2" parent="Panel/InfoPage/Shirt" index="1"]
+text = "Shirt"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/InfoPage"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Panel/InfoPage/HBoxContainer"]
+layout_mode = 2
+text = "Toon Name:"
+label_settings = SubResource("LabelSettings_lutu1")
+
+[node name="ToonName" type="TextEdit" parent="Panel/InfoPage/HBoxContainer"]
+custom_minimum_size = Vector2(133.015, 40.055)
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("15_re4kc")
+theme_override_colors/font_placeholder_color = Color(0.733005, 0.733005, 0.733005, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_selected_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("8_7282y")
+theme_override_font_sizes/font_size = 25
+placeholder_text = "Enter Name"
+scroll_fit_content_height = true
+
+[connection signal="pressed" from="Panel/HBoxContainer/SaveToon" to="." method="SaveAndClose"]
+[connection signal="Changed" from="Panel/PageButton" to="." method="ChangePage"]
+[connection signal="Changed" from="Panel/BodyColorPage/Species" to="." method="ChangeSpecies"]
+[connection signal="Changed" from="Panel/BodyColorPage/Body Height" to="." method="ChangeBodyHeight"]
+[connection signal="Changed" from="Panel/BodyColorPage/Head Shape" to="." method="ChangeHeadShape"]
+[connection signal="Changed" from="Panel/BodyColorPage/Color" to="." method="ChangeColor"]
+[connection signal="toggled" from="Panel/BodyColorPage/Color/AdvancedColor" to="." method="ToggleAdvancedColor"]
+[connection signal="Changed" from="Panel/BodyColorPage/HeadColor" to="." method="ChangeHeadColor"]
+[connection signal="Changed" from="Panel/BodyColorPage/BodyColor" to="." method="ChangeBodyColor"]
+[connection signal="Changed" from="Panel/BodyColorPage/LegsColor" to="." method="ChangeLegsColor"]
+[connection signal="Changed" from="Panel/BodyColorPage/EyeLashes" to="." method="ToggleLashes"]
+[connection signal="Changed" from="Panel/ClothesPage/Shirt" to="." method="ChangeShirt"]
+[connection signal="Changed" from="Panel/ClothesPage/ShirtColor" to="." method="ChangeShirtColor"]
+[connection signal="Changed" from="Panel/ClothesPage/SkirtToggle" to="." method="ToggleSkirt"]
+[connection signal="Changed" from="Panel/ClothesPage/Shorts" to="." method="ChangeShorts"]
+[connection signal="Changed" from="Panel/ClothesPage/ShortsColor" to="." method="ChangeShortsColor"]
+[connection signal="Changed" from="Panel/ClothesPage/Skirt" to="." method="ChangeSkirt"]
+[connection signal="Changed" from="Panel/ClothesPage/SkirtColor" to="." method="ChangeShortsColor"]
+[connection signal="Changed" from="Panel/InfoPage/Shirt" to="." method="ChangeShirt"]
+
+[editable path="Panel/HBoxContainer/Cancel"]
+[editable path="Panel/HBoxContainer/SaveToon"]
+[editable path="Panel/PageButton"]
+[editable path="Panel/PageButton/Decrement"]
+[editable path="Panel/PageButton/Increment"]
+[editable path="Panel/BodyColorPage/Species"]
+[editable path="Panel/BodyColorPage/Species/Decrement"]
+[editable path="Panel/BodyColorPage/Species/Increment"]
+[editable path="Panel/BodyColorPage/Body Height"]
+[editable path="Panel/BodyColorPage/Body Height/Decrement"]
+[editable path="Panel/BodyColorPage/Body Height/Increment"]
+[editable path="Panel/BodyColorPage/Head Shape"]
+[editable path="Panel/BodyColorPage/Head Shape/Decrement"]
+[editable path="Panel/BodyColorPage/Head Shape/Increment"]
+[editable path="Panel/BodyColorPage/Color"]
+[editable path="Panel/BodyColorPage/Color/Decrement"]
+[editable path="Panel/BodyColorPage/Color/Increment"]
+[editable path="Panel/BodyColorPage/Color/AdvancedColor"]
+[editable path="Panel/BodyColorPage/HeadColor"]
+[editable path="Panel/BodyColorPage/HeadColor/Decrement"]
+[editable path="Panel/BodyColorPage/HeadColor/Increment"]
+[editable path="Panel/BodyColorPage/BodyColor"]
+[editable path="Panel/BodyColorPage/BodyColor/Decrement"]
+[editable path="Panel/BodyColorPage/BodyColor/Increment"]
+[editable path="Panel/BodyColorPage/LegsColor"]
+[editable path="Panel/BodyColorPage/LegsColor/Decrement"]
+[editable path="Panel/BodyColorPage/LegsColor/Increment"]
+[editable path="Panel/BodyColorPage/EyeLashes"]
+[editable path="Panel/BodyColorPage/EyeLashes/Decrement"]
+[editable path="Panel/BodyColorPage/EyeLashes/Increment"]
+[editable path="Panel/ClothesPage/Shirt"]
+[editable path="Panel/ClothesPage/Shirt/Decrement"]
+[editable path="Panel/ClothesPage/Shirt/Increment"]
+[editable path="Panel/ClothesPage/ShirtColor"]
+[editable path="Panel/ClothesPage/ShirtColor/Decrement"]
+[editable path="Panel/ClothesPage/ShirtColor/Increment"]
+[editable path="Panel/ClothesPage/SkirtToggle"]
+[editable path="Panel/ClothesPage/SkirtToggle/Decrement"]
+[editable path="Panel/ClothesPage/SkirtToggle/Increment"]
+[editable path="Panel/ClothesPage/Shorts"]
+[editable path="Panel/ClothesPage/Shorts/Decrement"]
+[editable path="Panel/ClothesPage/Shorts/Increment"]
+[editable path="Panel/ClothesPage/ShortsColor"]
+[editable path="Panel/ClothesPage/ShortsColor/Decrement"]
+[editable path="Panel/ClothesPage/ShortsColor/Increment"]
+[editable path="Panel/ClothesPage/Skirt"]
+[editable path="Panel/ClothesPage/Skirt/Decrement"]
+[editable path="Panel/ClothesPage/Skirt/Increment"]
+[editable path="Panel/ClothesPage/SkirtColor"]
+[editable path="Panel/ClothesPage/SkirtColor/Decrement"]
+[editable path="Panel/ClothesPage/SkirtColor/Increment"]
+[editable path="Panel/InfoPage/Shirt"]
+[editable path="Panel/InfoPage/Shirt/Decrement"]
+[editable path="Panel/InfoPage/Shirt/Increment"]

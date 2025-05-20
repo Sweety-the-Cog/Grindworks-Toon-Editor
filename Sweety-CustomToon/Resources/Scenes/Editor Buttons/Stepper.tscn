@@ -1,0 +1,58 @@
+[gd_scene load_steps=9 format=3 uid="uid://b0tnwymf4fjdt"]
+
+[ext_resource type="PackedScene" uid="uid://b0d1er4oqiqcn" path="res://objects/general_ui/general_button/general_button.tscn" id="1_h6arv"]
+[ext_resource type="Script" uid="uid://nevb87d5n31a" path="res://mods-unpacked/Sweety-CustomToon/Resources/Scenes/Editor Buttons/stepper.gd" id="1_mg34x"]
+[ext_resource type="Texture2D" uid="uid://dpt21awypabxf" path="res://ui_assets/general/tt_t_gui_mat_shuffleArrowUp.png" id="2_mg34x"]
+[ext_resource type="Texture2D" uid="uid://bkbmvj823roof" path="res://ui_assets/general/tt_t_gui_mat_shuffleArrowDown.png" id="3_dyies"]
+[ext_resource type="FontFile" uid="uid://815gwlftl5ik" path="res://fonts/impress-bt.ttf" id="4_a2tps"]
+[ext_resource type="Texture2D" uid="uid://xhprgs7k8i2r" path="res://ui_assets/general/tt_t_gui_mat_shuffleArrowDisabled.png" id="5_dyies"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_kkjkl"]
+font = ExtResource("4_a2tps")
+font_size = 24
+
+[sub_resource type="LabelSettings" id="LabelSettings_yr53g"]
+font = ExtResource("4_a2tps")
+font_size = 24
+font_color = Color(0, 0, 0, 1)
+
+[node name="Stepper" type="HBoxContainer"]
+size_flags_horizontal = 3
+alignment = 1
+script = ExtResource("1_mg34x")
+
+[node name="Decrement" parent="." instance=ExtResource("1_h6arv")]
+custom_minimum_size = Vector2(24, 44)
+layout_mode = 2
+texture_normal = ExtResource("2_mg34x")
+texture_pressed = ExtResource("3_dyies")
+texture_hover = ExtResource("3_dyies")
+texture_disabled = ExtResource("5_dyies")
+
+[node name="Label" parent="Decrement" index="0"]
+label_settings = SubResource("LabelSettings_kkjkl")
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 2
+text = "Button"
+label_settings = SubResource("LabelSettings_yr53g")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Increment" parent="." instance=ExtResource("1_h6arv")]
+custom_minimum_size = Vector2(24, 44)
+layout_mode = 2
+texture_normal = ExtResource("2_mg34x")
+texture_pressed = ExtResource("3_dyies")
+texture_hover = ExtResource("3_dyies")
+texture_disabled = ExtResource("5_dyies")
+flip_h = true
+
+[node name="Label" parent="Increment" index="0"]
+label_settings = SubResource("LabelSettings_kkjkl")
+
+[connection signal="pressed" from="Decrement" to="." method="Stepper_pressed" binds= [-1]]
+[connection signal="pressed" from="Increment" to="." method="Stepper_pressed" binds= [1]]
+
+[editable path="Decrement"]
+[editable path="Increment"]
