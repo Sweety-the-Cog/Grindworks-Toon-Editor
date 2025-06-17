@@ -4,7 +4,7 @@ var selected_character: PlayerCharacter
 var toon:Toon
 
 signal Saved()
-
+signal Closed()
 
 var CurrentSkirtColor
 
@@ -130,7 +130,9 @@ func ChangeLegsColor(Index:int):
 
 func SaveAndClose():
 	Saved.emit()
-
+	
+func Close():
+	Closed.emit()
 
 
 func ToggleAdvancedColor(Index:bool):

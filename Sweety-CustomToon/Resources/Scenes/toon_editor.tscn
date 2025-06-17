@@ -366,6 +366,7 @@ theme_override_font_sizes/font_size = 25
 placeholder_text = "Enter Name"
 scroll_fit_content_height = true
 
+[connection signal="pressed" from="Panel/HBoxContainer/Cancel" to="." method="Close"]
 [connection signal="pressed" from="Panel/HBoxContainer/SaveToon" to="." method="SaveAndClose"]
 [connection signal="Changed" from="Panel/PageButton" to="." method="ChangePage"]
 [connection signal="Changed" from="Panel/BodyColorPage/Species" to="." method="ChangeSpecies"]

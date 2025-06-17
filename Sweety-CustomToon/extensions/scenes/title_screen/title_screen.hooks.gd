@@ -23,6 +23,7 @@ func new_game_pressed(chain: ModLoaderHookChain):
 		Editor = ToonEditor.instantiate()
 		self_ref.new_game_menu.get_parent().add_child(Editor)
 		Editor.Saved.connect(UpdateToon.bind(chain))
+		Editor.Closed.connect(HideEditor.bind(chain))
 	Editor.hide()
 	
 	var SummaryButtons = self_ref.toon_summary.find_child("HBoxContainer")
@@ -35,9 +36,12 @@ func ShowEditor(toon: PackedScene, character: PlayerCharacter):
 	Editor.show()
 	Editor.GenerateToon(character,toon)
 	
-func UpdateToon(chain: ModLoaderHookChain):
+func HideEditor(chain: ModLoaderHookChain):
 	Editor.hide()
 	Editor.toon.queue_free()
+	
+func UpdateToon(chain: ModLoaderHookChain):
+	HideEditor(chain)
 	var self_ref = chain.reference_object
 	self_ref.selected_character.dna = Editor.get_editor_dna()
 	self_ref.selected_character.random_character_stored_name = Editor.get_editor_name()
