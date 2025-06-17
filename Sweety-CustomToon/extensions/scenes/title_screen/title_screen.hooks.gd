@@ -16,7 +16,7 @@ func toon_clicked(chain: ModLoaderHookChain, toon: Toon, character: PlayerCharac
 	else:
 		CustomizeButton.hide()
 	
-func play_pressed(chain: ModLoaderHookChain):
+func new_game_pressed(chain: ModLoaderHookChain):
 	await chain.execute_next_async([])
 	var self_ref = chain.reference_object
 	if !Editor:
