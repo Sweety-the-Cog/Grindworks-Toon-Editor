@@ -10,9 +10,10 @@ var Editor
 func toon_clicked(chain: ModLoaderHookChain, toon: Toon, character: PlayerCharacter) -> void:
 	chain.execute_next([toon,character])
 	var self_ref = chain.reference_object
+
 	if self_ref.selected_character.character_name == "RandomToon":
 		CustomizeButton.show()
-		CustomizeButton.pressed.connect(ShowEditor.bind(self_ref.TOON,self_ref.selected_character))
+		CustomizeButton.pressed.connect(ShowEditor.bind(self_ref.selected_toon,chain))
 	else:
 		CustomizeButton.hide()
 	
@@ -32,9 +33,10 @@ func new_game_pressed(chain: ModLoaderHookChain):
 		SummaryButtons.add_child(CustomizeButton)
 	CustomizeButton.hide()
 	
-func ShowEditor(toon: PackedScene, character: PlayerCharacter):
+func ShowEditor(character: Toon,chain: ModLoaderHookChain):
 	Editor.show()
-	Editor.GenerateToon(character,toon)
+	var self_ref = chain.reference_object
+	Editor.GenerateToon(character,self_ref.random_toon_name)
 	
 func HideEditor(chain: ModLoaderHookChain):
 	Editor.hide()
@@ -46,6 +48,7 @@ func UpdateToon(chain: ModLoaderHookChain):
 	self_ref.selected_character.dna = Editor.get_editor_dna()
 	self_ref.selected_character.random_character_stored_name = Editor.get_editor_name()
 	self_ref.toon_summary.find_child("ToonName").text = Editor.get_editor_name()
+	self_ref.random_toon_name = Editor.get_editor_name()
 	
 	self_ref.selected_toon.construct_toon(self_ref.selected_character.dna)
 	self_ref.selected_toon.animator.play('neutral')
